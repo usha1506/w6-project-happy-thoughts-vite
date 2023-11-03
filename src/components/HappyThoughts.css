@@ -1,6 +1,24 @@
-.task {
-  border: 1px white solid;
+.happy-thought-item {
+  border: 1px black solid;
   padding: 4px;
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--general-smaller-padding);
+  box-shadow: var(--box-shadow);
+  -webkit-box-shadow: var(--box-shadow);
+}
+
+.like-button {
+  background-color: #d1d1d1;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  animation: pulse-small 2s infinite;
+}
+
+.error {
+  color: red;
 }

@@ -7,6 +7,7 @@ export const HappyThoughts = () => {
   const [happyThoughtList, setHappyThoughtList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newHappyThought, setNewHappyThought] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const getThoughtList = async () => {
     setLoading(true);
@@ -15,7 +16,8 @@ export const HappyThoughts = () => {
       const data = await getThoughts();
       setHappyThoughtList(data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      setErrorMessage("Error occurred while loading thoughts!");
     } finally {
       setLoading(false);
     }
@@ -25,18 +27,23 @@ export const HappyThoughts = () => {
     getThoughtList();
   }, []);
 
-  const handleNewTodoChange = (event) => {
-    setNewHappyThought(event.target.value);
+  const handleNewThoughtChange = (message) => {
+    setNewHappyThought(message);
   };
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
 
+    setErrorMessage("");
+
     try {
       await postThought({ message: newHappyThought });
       await getThoughtList();
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      setErrorMessage(
+        `Unable to post the happy thoughts for '${newHappyThought}'`
+      );
     } finally {
       setNewHappyThought("");
     }
@@ -46,9 +53,10 @@ export const HappyThoughts = () => {
     <div>
       <HappyThoughtForm
         newThought={newHappyThought}
-        onNewThoughtChange={handleNewTodoChange}
+        onNewThoughtChange={handleNewThoughtChange}
         onFormSubmit={onFormSubmit}
       />
+      {errorMessage && <p className="error"> {errorMessage} </p>}
       <HappyThoughtList
         loading={loading}
         thoughtList={happyThoughtList}

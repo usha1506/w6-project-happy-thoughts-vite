@@ -1,37 +1,27 @@
-import { formatRelative } from "date-fns";
+import { useState } from "react";
+
+import moment from "moment";
+
 import "./HappyThoughts.css";
+import { postLike } from "../apis/fetchThoughts";
 
 const HappyThoughtList = ({ loading, thoughtList, setThoughtList }) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
   if (loading) {
     return <h1>Loading in progress...</h1>;
   }
 
-  const onTaskCheckChange = (task) => {
-    // update a state object
-    /* updatedTask is a new object that is the same as the task object except for the isChecked property, 
-    which is toggled from true to false or from false to true. 
-    This code is often used to update a property of an object while preserving the rest of its properties. */
-    const updatedTask = { ...task, isChecked: !task.isChecked };
+  const handleLikeButtonClick = (thought) => {
+    setErrorMessage("");
 
-    // Make a POST request here with the updated task isChecked value
-    fetch(`https://week-7-backend.onrender.com/tasks/${task._id}/check`, {
-      method: "POST",
-      headers: { updatedTask, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        isChecked: updatedTask.isChecked,
-      }),
-    })
-      .then((response) => response.json())
-      .catch((error) => {
-        console.log(error);
-        // Handle network or other errors
-      });
+    postLike(thought._id).catch((error) => setErrorMessage(error.message));
 
-    // Update the task list in the state
-    // Use .map to update the specific task if found, otherwise return it unchanged
-    setThoughtList((taskList) =>
-      taskList.map((singleTask) =>
-        singleTask._id === task._id ? updatedTask : singleTask
+    setThoughtList((prevList) =>
+      prevList.map((prevThought) =>
+        prevThought._id === thought._id
+          ? { ...prevThought, hearts: thought.hearts + 1 }
+          : prevThought
       )
     );
   };
@@ -40,17 +30,27 @@ const HappyThoughtList = ({ loading, thoughtList, setThoughtList }) => {
     <section>
       {thoughtList
         .map((thought) => (
-          <div key={thought._id} className="task">
-            <input
-              onChange={() => onTaskCheckChange(thought)}
-              type="checkbox"
-              checked={thought.isChecked}
-            />
-            <h4>{thought.message}</h4>
-            {/* <p>{formatRelative(thought.createdAt, new Date())}</p> */}
-          </div>
+          <section key={thought._id} className="happy-thought-item">
+            <p>{thought.message}</p>
+            <div className="info-wrapper">
+              <div className="info-like">
+                <button
+                  id="likeButton"
+                  aria-labelledby="heartLabel"
+                  className="like-button"
+                  onClick={() => handleLikeButtonClick(thought)}
+                >
+                  <div id="heartLabel">❤️</div>
+                </button>
+                <span className="like-count">x{thought.hearts}</span>
+              </div>
+              <p>{moment(new Date(thought.createdAt)).fromNow()}</p>
+              <div className="created-time">{thought.createdAt}</div>
+            </div>
+            {errorMessage && <p className="error"> {errorMessage} </p>}
+          </section>
         ))
-        .reverse()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
         .slice(0, 20)}
     </section>
   );
