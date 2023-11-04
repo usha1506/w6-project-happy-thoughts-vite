@@ -8,13 +8,22 @@ const HappyThoughtForm = ({ newThought, onNewThoughtChange, onFormSubmit }) => {
       <h2>What is making you happy right now?</h2>
       <form onSubmit={onFormSubmit}>
         <textarea
+          id="textArea"
           rows="3"
           placeholder="React is making me happy!"
           value={newThought}
           onChange={handleNewThoughtChange}
         ></textarea>
+        <br></br>
+        <br></br>
         <button id="submitButton" type="submit">
-          <div id="heartLabel">❤️ Send Happy Thought ❤️</div>
+          <span class="emoji" aria-label="heart emoji">
+            ❤️
+          </span>
+          "Send Happy Thought"
+          <span class="emoji" aria-label="heart emoji">
+            ❤️
+          </span>
         </button>
       </form>
     </div>

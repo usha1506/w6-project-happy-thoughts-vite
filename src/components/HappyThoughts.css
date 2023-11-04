@@ -2,12 +2,13 @@
   border: 1px black solid;
   padding: 4px;
   border-radius: 4px;
-  margin: 8px;
+  margin: 25px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: var(--general-smaller-padding);
   box-shadow: var(--box-shadow);
-  -webkit-box-shadow: var(--box-shadow);
+  width: var(--main-width-desktop);
 }
 
 .like-button {
@@ -36,17 +37,14 @@
   gap: 10px;
   box-shadow: var(--box-shadow);
   -webkit-box-shadow: var(--box-shadow);
-  width: var(--main-width-mobile);
+  width: var(--main-width-desktop);
   form {
     width: 100%;
   }
-  textarea {
-    font-size: 18px;
-    width: 100%;
-    margin: 10px 0 2px;
-    background: white;
-    text-align: center;
-  }
+}
+.happy-thought-submit-form-wrapper::after {
+  content: "\a";
+  white-space: pre;
 }
 
 .happy-thoughts-wrapper {
@@ -57,4 +55,24 @@
   flex-direction: column;
   align-items: center;
   gap: 25px;
+}
+
+#submitButton {
+  background-color: #ffb7d2;
+  border-radius: 25px;
+  padding: 5px 10px;
+  margin: 0 0 5px;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+#textArea {
+  text-align: center;
+  width: 500px;
+  height: 100px;
 }
