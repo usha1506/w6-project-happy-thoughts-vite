@@ -45,7 +45,6 @@ const HappyThoughtList = ({ loading, thoughtList, setThoughtList }) => {
                 <span className="like-count">x{thought.hearts}</span>
               </div>
               <p>{moment(new Date(thought.createdAt)).fromNow()}</p>
-              <div className="created-time">{thought.createdAt}</div>
             </div>
             {errorMessage && <p className="error"> {errorMessage} </p>}
           </section>

@@ -50,7 +50,7 @@ export const HappyThoughts = () => {
   };
 
   return (
-    <div>
+    <div className="happy-thoughts-wrapper">
       <HappyThoughtForm
         newThought={newHappyThought}
         onNewThoughtChange={handleNewThoughtChange}
