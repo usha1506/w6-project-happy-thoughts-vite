@@ -14,7 +14,7 @@ export const postThought = async (thought) => {
     headers: HEADER_CONTENT_TYPE_JSON,
   };
 
-  await fetchData(URL, init);
+  return await fetchData(URL, init, true);
 };
 
 export const postLike = async (thoughtId) => {

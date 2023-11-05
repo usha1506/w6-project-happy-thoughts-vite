@@ -43,8 +43,8 @@ export const HappyThoughts = () => {
     }
 
     try {
-      await postThought({ message: newHappyThought });
-      await getThoughtList();
+      const newThought = await postThought({ message: newHappyThought });
+      setHappyThoughtList((prev) => [newThought, ...prev]);
     } catch (error) {
       console.log(error);
       setErrorMessage(

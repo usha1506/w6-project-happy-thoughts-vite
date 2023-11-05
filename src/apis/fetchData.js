@@ -1,4 +1,8 @@
-export const fetchData = async (url, requestInit = undefined) => {
+export const fetchData = async (
+  url,
+  requestInit = undefined,
+  jsonResponse = false
+) => {
   let init = requestInit;
   if (!init) {
     init = {
@@ -13,7 +17,11 @@ export const fetchData = async (url, requestInit = undefined) => {
     throw new Error(errorCause);
   }
 
-  if (init.method === undefined || init.method === HttpMethod.GET) {
+  if (
+    init.method === undefined ||
+    init.method === HttpMethod.GET ||
+    jsonResponse
+  ) {
     return response.json();
   }
 };

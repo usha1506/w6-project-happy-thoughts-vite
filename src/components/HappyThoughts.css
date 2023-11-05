@@ -91,7 +91,6 @@ form {
   flex-direction: column;
   padding: var(--general-smaller-padding);
   box-shadow: var(--box-shadow);
-  width: var(--main-width-desktop);
 }
 
 .happy-thought-item p {
@@ -134,4 +133,68 @@ form {
 .error {
   color: red;
   font-size: 16px;
+  word-wrap: break-word;
+}
+
+@keyframes pulse-small {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/*https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile*/
+@media (min-width: 320px) {
+  /* smartphones, iPhone, portrait 480x320 phones */
+  .happy-thoughts-wrapper {
+    width: 90%;
+  }
+
+  .happy-thought-submit-form-wrapper,
+  .happy-thought-list {
+    width: var(--main-width-mobile);
+  }
+
+  .happy-thought-item {
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) {
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+  .happy-thoughts-wrapper {
+    width: 80%;
+  }
+
+  .happy-thought-submit-form-wrapper,
+  .happy-thought-list {
+    width: var(--main-width-desktop);
+  }
+
+  .happy-thought-item {
+    width: 100%;
+  }
+}
+
+@media (min-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .happy-thoughts-wrapper {
+    width: 70%;
+  }
+
+  .happy-thought-submit-form-wrapper,
+  .happy-thought-list {
+    width: var(--main-width-desktop);
+  }
+
+  .happy-thought-item {
+    width: 100%;
+  }
 }
