@@ -39,7 +39,7 @@ const HappyThoughtList = ({ loading, thoughtList, setThoughtList }) => {
                   aria-labelledby="heartDiv"
                   onClick={() => handleLikeButtonClick(thought)}
                 >
-                  <div id="heartDiv">❤️</div>
+                  <div className="heart-emoji">❤️</div>
                 </button>
                 <span className="happy-thought-like-count">
                   x{thought.hearts}

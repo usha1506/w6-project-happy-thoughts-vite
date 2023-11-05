@@ -20,11 +20,11 @@ const HappyThoughtForm = ({
           onChange={handleNewThoughtChange}
         ></textarea>
         <button id="submitButton" type="submit">
-          <span className="emoji" aria-label="heart emoji">
+          <span className="heart-emoji" aria-label="heart emoji">
             ❤️
           </span>
           {"Send Happy Thought"}
-          <span className="emoji" aria-label="heart emoji">
+          <span className="heart-emoji" aria-label="heart emoji">
             ❤️
           </span>
         </button>

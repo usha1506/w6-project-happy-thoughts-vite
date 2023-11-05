@@ -119,8 +119,7 @@ form {
   background-color: var(--hover-color);
 }
 
-#heartDiv,
-.emoji {
+.heart-emoji {
   font-size: 24px;
 }
 
