@@ -69,10 +69,23 @@ form {
 }
 
 #textArea {
-  text-align: center;
   font-size: 18px;
   width: 100%;
-  margin: 0 0 20px;
+  margin: 0;
+}
+
+.text-area-length-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.text-area-length {
+  color: gray;
+  margin: 0;
+  min-width: 50px;
 }
 
 .happy-thought-list {
@@ -134,6 +147,12 @@ form {
   color: red;
   font-size: 16px;
   word-wrap: break-word;
+  margin: 0;
+  width: 80%;
+}
+
+.red {
+  color: red;
 }
 
 @keyframes pulse-small {
@@ -154,7 +173,7 @@ form {
 @media (min-width: 320px) {
   /* smartphones, iPhone, portrait 480x320 phones */
   .happy-thoughts-wrapper {
-    width: 90%;
+    width: 80%;
   }
 
   .happy-thought-submit-form-wrapper,
@@ -192,9 +211,5 @@ form {
   .happy-thought-submit-form-wrapper,
   .happy-thought-list {
     width: var(--main-width-desktop);
-  }
-
-  .happy-thought-item {
-    width: 100%;
   }
 }

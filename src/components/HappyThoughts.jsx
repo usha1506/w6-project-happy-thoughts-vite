@@ -28,7 +28,9 @@ export const HappyThoughts = () => {
   }, []);
 
   const handleNewThoughtChange = (message) => {
-    setErrorMessage("");
+    message.length > 140
+      ? setErrorMessage("Your message is too long 😔")
+      : setErrorMessage("");
     setNewHappyThought(message);
   };
 

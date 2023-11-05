@@ -19,6 +19,16 @@ const HappyThoughtForm = ({
           value={newThought}
           onChange={handleNewThoughtChange}
         ></textarea>
+        <div className="text-area-length-wrapper">
+          <p className="error"> {errorMessage} </p>
+          <p
+            className={
+              "text-area-length " + (newThought.length > 140 ? "red" : "")
+            }
+          >
+            {newThought.length}/140
+          </p>
+        </div>
         <button id="submitButton" type="submit">
           <span className="heart-emoji" aria-label="heart emoji">
             ❤️
@@ -28,7 +38,6 @@ const HappyThoughtForm = ({
             ❤️
           </span>
         </button>
-        {errorMessage && <p className="error"> {errorMessage} </p>}
       </form>
     </div>
   );
