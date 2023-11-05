@@ -17,11 +17,11 @@ const HappyThoughtForm = ({ newThought, onNewThoughtChange, onFormSubmit }) => {
         <br></br>
         <br></br>
         <button id="submitButton" type="submit">
-          <span class="emoji" aria-label="heart emoji">
+          <span className="emoji" aria-label="heart emoji">
             ❤️
           </span>
-          "Send Happy Thought"
-          <span class="emoji" aria-label="heart emoji">
+          {"Send Happy Thought"}
+          <span className="emoji" aria-label="heart emoji">
             ❤️
           </span>
         </button>
