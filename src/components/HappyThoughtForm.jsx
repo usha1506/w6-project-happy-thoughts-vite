@@ -19,8 +19,6 @@ const HappyThoughtForm = ({
           value={newThought}
           onChange={handleNewThoughtChange}
         ></textarea>
-        <br></br>
-        <br></br>
         <button id="submitButton" type="submit">
           <span className="emoji" aria-label="heart emoji">
             ❤️

@@ -57,6 +57,7 @@ export const HappyThoughts = () => {
 
   return (
     <div className="happy-thoughts-wrapper">
+      <heading className="happy-thoughts-heading"> Happy Thoughts </heading>
       <HappyThoughtForm
         newThought={newHappyThought}
         errorMessage={errorMessage}

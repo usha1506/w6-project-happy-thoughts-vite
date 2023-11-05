@@ -1,29 +1,33 @@
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/var */
 
-.happy-thought-item {
-  border: 1px black solid;
-  padding: 4px;
-  border-radius: 4px;
-  margin: 25px;
+.happy-thoughts-wrapper {
+  margin: 20px auto;
+  padding: 5px var(--general-padding);
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--general-smaller-padding);
-  box-shadow: var(--box-shadow);
-  width: var(--main-width-desktop);
+  gap: 25px;
 }
 
-.like-button {
-  background-color: #d1d1d1;
-  padding: 10px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  animation: pulse-small 2s infinite;
-}
-
-.error {
-  color: red;
+.happy-thoughts-heading {
+  font-size: 45px;
+  font-weight: 800;
+  font-family: Abril Fatface;
+  background: -webkit-linear-gradient(
+    45deg,
+    #ff199f,
+    #cd8cdd,
+    #5be288,
+    #bef146,
+    #7e6ed8
+  );
+  text-align: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  letter-spacing: -3px;
 }
 
 .happy-thought-submit-form-wrapper {
@@ -40,24 +44,10 @@
   box-shadow: var(--box-shadow);
   -webkit-box-shadow: var(--box-shadow);
   width: var(--main-width-desktop);
-  form {
-    width: 100%;
-  }
 }
 
-.happy-thought-submit-form-wrapper::after {
-  content: "\a";
-  white-space: pre;
-}
-
-.happy-thoughts-wrapper {
-  margin: 20px auto;
-  padding: 5px var(--general-padding);
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
+form {
+  width: 100%;
 }
 
 #submitButton {
@@ -66,7 +56,7 @@
   padding: 5px 10px;
   margin: 0 0 5px;
   border: none;
-  font-size: 15px;
+  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,8 +64,75 @@
   cursor: pointer;
 }
 
+#submitButton:hover {
+  background-color: var(--hover-color);
+}
+
 #textArea {
   text-align: center;
-  width: 500px;
-  height: 100px;
+  font-size: 18px;
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.happy-thought-list {
+  padding: 5px var(--general-padding);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.happy-thought-item {
+  border: 1px black solid;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--general-smaller-padding);
+  box-shadow: var(--box-shadow);
+  width: var(--main-width-desktop);
+}
+
+.happy-thought-item p {
+  margin: 10px 0 15px;
+  font-size: 18px;
+}
+
+.happy-thought-item-details-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+#likeButton {
+  background-color: #d1d1d1;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  animation: pulse-small 2s infinite;
+}
+
+#likeButton:hover {
+  background-color: var(--hover-color);
+}
+
+#heartDiv,
+.emoji {
+  font-size: 24px;
+}
+
+.happy-thought-like-count {
+  margin-left: 5px;
+}
+
+.happy-thought-created-time {
+  color: gray;
+}
+
+.error {
+  color: red;
+  font-size: 16px;
 }

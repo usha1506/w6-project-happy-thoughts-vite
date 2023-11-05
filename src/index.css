@@ -15,26 +15,6 @@
   --hover-color: rgb(255, 199, 220);
 }
 
-.project-heading {
-  font-size: 45px;
-  font-weight: 800;
-  font-family: Abril Fatface;
-  background: -webkit-linear-gradient(
-    45deg,
-    #ff199f,
-    #cd8cdd,
-    #5be288,
-    #bef146,
-    #7e6ed8
-  );
-  text-align: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: block;
-  letter-spacing: -3px;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

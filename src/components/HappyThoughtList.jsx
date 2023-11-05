@@ -27,24 +27,27 @@ const HappyThoughtList = ({ loading, thoughtList, setThoughtList }) => {
   };
 
   return (
-    <section>
+    <section className="happy-thought-list">
       {thoughtList
         .map((thought) => (
           <section key={thought._id} className="happy-thought-item">
             <p>{thought.message}</p>
-            <div className="info-wrapper">
-              <div className="info-like">
+            <div className="happy-thought-item-details-wrapper">
+              <div>
                 <button
                   id="likeButton"
-                  aria-labelledby="heartLabel"
-                  className="like-button"
+                  aria-labelledby="heartDiv"
                   onClick={() => handleLikeButtonClick(thought)}
                 >
-                  <div id="heartLabel">❤️</div>
+                  <div id="heartDiv">❤️</div>
                 </button>
-                <span className="like-count">x{thought.hearts}</span>
+                <span className="happy-thought-like-count">
+                  x{thought.hearts}
+                </span>
               </div>
-              <p>{moment(new Date(thought.createdAt)).fromNow()}</p>
+              <span className="happy-thought-created-time">
+                {moment(new Date(thought.createdAt)).fromNow()}
+              </span>
             </div>
             {errorMessage && <p className="error"> {errorMessage} </p>}
           </section>
