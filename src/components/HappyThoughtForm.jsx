@@ -1,4 +1,9 @@
-const HappyThoughtForm = ({ newThought, onNewThoughtChange, onFormSubmit }) => {
+const HappyThoughtForm = ({
+  newThought,
+  errorMessage,
+  onNewThoughtChange,
+  onFormSubmit,
+}) => {
   const handleNewThoughtChange = (event) => {
     onNewThoughtChange(event.target.value);
   };
@@ -25,6 +30,7 @@ const HappyThoughtForm = ({ newThought, onNewThoughtChange, onFormSubmit }) => {
             ❤️
           </span>
         </button>
+        {errorMessage && <p className="error"> {errorMessage} </p>}
       </form>
     </div>
   );

@@ -28,6 +28,7 @@ export const HappyThoughts = () => {
   }, []);
 
   const handleNewThoughtChange = (message) => {
+    setErrorMessage("");
     setNewHappyThought(message);
   };
 
@@ -36,13 +37,18 @@ export const HappyThoughts = () => {
 
     setErrorMessage("");
 
+    if (!newHappyThought) {
+      setErrorMessage("Please write your happy thought!");
+      return;
+    }
+
     try {
       await postThought({ message: newHappyThought });
       await getThoughtList();
     } catch (error) {
       console.log(error);
       setErrorMessage(
-        `Unable to post the happy thoughts for '${newHappyThought}'`
+        `Unable to save the happy thoughts for '${newHappyThought}'`
       );
     } finally {
       setNewHappyThought("");
@@ -53,10 +59,10 @@ export const HappyThoughts = () => {
     <div className="happy-thoughts-wrapper">
       <HappyThoughtForm
         newThought={newHappyThought}
+        errorMessage={errorMessage}
         onNewThoughtChange={handleNewThoughtChange}
         onFormSubmit={onFormSubmit}
       />
-      {errorMessage && <p className="error"> {errorMessage} </p>}
       <HappyThoughtList
         loading={loading}
         thoughtList={happyThoughtList}
